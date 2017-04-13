@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ag-Grid," />
 
 
 
@@ -87,15 +87,17 @@
 
 
 
-<meta name="description" content="这里什么都没有">
-<meta property="og:type" content="website">
-<meta property="og:title" content="leopride's blog">
-<meta property="og:url" content="leopride.top/index.html">
+<meta name="description" content="AG-GRID分页ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件 简单的分页要分页必备的几个属性 pagination: true 开启分页，系统会自动开启默认的分页 paginationAutoPageSize: true 每页的显示行数自">
+<meta name="keywords" content="ag-Grid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ag-Grid分页">
+<meta property="og:url" content="leopride.top/2017/04/13/ag-Grid分页/index.html">
 <meta property="og:site_name" content="leopride's blog">
-<meta property="og:description" content="这里什么都没有">
+<meta property="og:description" content="AG-GRID分页ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件 简单的分页要分页必备的几个属性 pagination: true 开启分页，系统会自动开启默认的分页 paginationAutoPageSize: true 每页的显示行数自">
+<meta property="og:updated_time" content="2017-04-13T06:03:01.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leopride's blog">
-<meta name="twitter:description" content="这里什么都没有">
+<meta name="twitter:title" content="ag-Grid分页">
+<meta name="twitter:description" content="AG-GRID分页ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件 简单的分页要分页必备的几个属性 pagination: true 开启分页，系统会自动开启默认的分页 paginationAutoPageSize: true 每页的显示行数自">
 
 
 
@@ -123,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="leopride.top/"/>
+  <link rel="canonical" href="leopride.top/2017/04/13/ag-Grid分页/"/>
 
 
 
 
 
-  <title> leopride's blog </title>
+  <title> ag-Grid分页 | leopride's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,9 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,9 +239,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -271,10 +271,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/04/13/ag-Grid分页/" itemprop="url">
-                  ag-Grid分页
-                </a>
+                ag-Grid分页
               
             
           </h1>
@@ -325,9 +322,7 @@
       
 
       
-        
-          
-            <h1 id="AG-GRID分页"><a href="#AG-GRID分页" class="headerlink" title="AG-GRID分页"></a>AG-GRID分页</h1><pre><code>ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件
+        <h1 id="AG-GRID分页"><a href="#AG-GRID分页" class="headerlink" title="AG-GRID分页"></a>AG-GRID分页</h1><pre><code>ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件
 </code></pre><h2 id="简单的分页"><a href="#简单的分页" class="headerlink" title="简单的分页"></a>简单的分页</h2><h6 id="要分页必备的几个属性"><a href="#要分页必备的几个属性" class="headerlink" title="要分页必备的几个属性"></a>要分页必备的几个属性</h6><ul>
 <li>pagination: true 开启分页，系统会自动开启默认的分页</li>
 <li>paginationAutoPageSize: true 每页的显示行数自适应你定义的高度</li>
@@ -382,436 +377,72 @@
 <p>2.DataSource类：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"> class DataSource implements IDatasource &#123;</div><div class="line">    constructor(private saleOrderService: SaleOrderService) &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    getRows(params: IGetRowsParams): void &#123;</div><div class="line">        //系统每次请求数据的时候，都会传入两个参数：startRow和endRow，你们懂的</div><div class="line">        </div><div class="line">        console.log(&apos;asking for &apos; + params.startRow + &apos; to &apos; + params.endRow);</div><div class="line">        //params.sortModel 是排序模式，这里是一个数组</div><div class="line">         console.log(params.sortModel);</div><div class="line">        var sort = params.sortModel[0];</div><div class="line">                var sortString = null;</div><div class="line">                if (sort != null) &#123;</div><div class="line">                    console.log(sort.sort);</div><div class="line">                    sortString=sort.colId+&apos;,&apos;+sort.sort;</div><div class="line">                &#125;</div><div class="line">        //这里做请求，根据请求返回的数据，请求成功调用params的successCallback(data,lastRow)方法</div><div class="line">        //modelGlobal则是任意参数 ，可以是startRow、endRow,这里没写，</div><div class="line">        this.saleOrderService.dynamicQuery(modelGlobal).subscribe(</div><div class="line">            (res: Response) =&gt; &#123;</div><div class="line">                console.log(modelGlobal);</div><div class="line">                params.successCallback(res.json(), res.json().length);</div><div class="line">            &#125;,</div><div class="line">            (res: Response) =&gt; &#123;</div><div class="line">                params.failCallback();</div><div class="line">            &#125;</div><div class="line">        );</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="待续：如何刷新当前数据"><a href="#待续：如何刷新当前数据" class="headerlink" title="待续：如何刷新当前数据"></a>待续：如何刷新当前数据</h2>
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="leopride.top/2017/04/12/home/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="aoter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="leopride's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/12/home/" itemprop="url">
-                  生活不只是眼前的苟且，还有诗和远方的田野
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T20:26:10+08:00">
-                2017-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/ag-Grid/" rel="tag"># ag-Grid</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <p>生活不只是眼前的苟且，还有诗和远方~<br><img src="/image/baoshijie.jpg" alt="image"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="leopride.top/2017/04/12/ag-grid开启行编辑/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="aoter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="leopride's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-              
-                
-                <a class="post-title-link" href="/2017/04/12/ag-grid开启行编辑/" itemprop="url">
-                  ag-Grid开启行编辑
-                </a>
-              
+              <a href="/2017/04/12/home/" rel="prev" title="生活不只是眼前的苟且，还有诗和远方的田野">
+                生活不只是眼前的苟且，还有诗和远方的田野 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T13:08:21+08:00">
-                2017-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="AG-GRID-开启行编辑"><a href="#AG-GRID-开启行编辑" class="headerlink" title="AG-GRID 开启行编辑"></a>AG-GRID 开启行编辑</h1><p>在表头定义的属性中添加editable = true<br> 例如：</p>
-<p> {headerName: “Name”, field: “name”, width: 150,editable: true},</p>
-<p> 如果要开启行编辑，除了editable之外，还需要editType = ‘fullRow’属性</p>
-<h2 id="默认情况以及修改"><a href="#默认情况以及修改" class="headerlink" title="默认情况以及修改"></a>默认情况以及修改</h2><p><strong>开启编辑的方式默认情况下有以下几种情况：</strong></p>
-<ul>
-<li>编辑按键按下，例如enter、delete、等</li>
-<li>输入任意字符</li>
-<li>鼠标双击  </li>
-<li>调用 api.startEditingCell()</li>
-</ul>
-<p><strong>结束行编辑的默认方式：</strong></p>
-<ul>
-<li>回掉stopEditing</li>
-<li>聚焦其它单元格</li>
-<li>输入enter、desc等建</li>
-<li>方向键</li>
-<li>窗口关闭</li>
-<li>调用gridApi.stopEditing()</li>
-</ul>
-<p><strong>修改：</strong></p>
-<p>-如果要使用单击，请设置属性：singleClickEdit = true</p>
-<p>-单击双击都不可以：suppressClickEdit = true,这个用来放button开启cell编辑时非常有用</p>
-<p>-当鼠标失去焦点停止编辑：stopEditingWhenGridLosesFocus = true。</p>
-<h2 id="单元格编辑器组件使用："><a href="#单元格编辑器组件使用：" class="headerlink" title="单元格编辑器组件使用："></a>单元格编辑器组件使用：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">界面ICellEditorComp &#123;</div><div class="line"></div><div class="line">    //编辑器创建后调用一次</div><div class="line">    init？（params：ICellEditorParams）：void;</div><div class="line"></div><div class="line">    //在GUI附加到DOM之后调用一次。</div><div class="line">    //如果要聚焦或突出显示组件</div><div class="line">    //（如果元素未附加，则不可行）</div><div class="line">    afterGuiAttached？（）：void;</div><div class="line"></div><div class="line">    //返回编辑器的DOM元素，这就是网格放入DOM中</div><div class="line">    getGui（）：HTMLElement;</div><div class="line"></div><div class="line">    //应该将最终的值返回给网格，这是编辑的结果</div><div class="line">    getValue（）：any;</div><div class="line"></div><div class="line">    //编辑完成后，通过网格调用一次</div><div class="line">    //如果您的编辑器需要执行任何清理，请在此处执行</div><div class="line">    destroy？（）：void;</div><div class="line"></div><div class="line">    //初始化后调用一次。</div><div class="line">    //如果返回true，编辑器将显示在弹出窗口中</div><div class="line">    isPopup？（）：boolean;</div><div class="line"></div><div class="line">    //在编辑开始之前调用一次，给编辑者一个机会</div><div class="line">    //在编辑开始之前取消编辑。</div><div class="line">    isCancelBeforeStart？（）：boolean;</div><div class="line"></div><div class="line">    //编辑完成时调用一次（例如，如果按下Enter键）。</div><div class="line">    //如果返回true，则编辑的结果将被忽略。</div><div class="line">    isCancelAfterEnd？（）：boolean;</div><div class="line"></div><div class="line">    //如果执行完整行编辑，则在标签单元格时调用。</div><div class="line">    focusIn？（）：boolean;</div><div class="line"></div><div class="line">    //如果执行完整行编辑，则在从单元格中单击时将被调用。</div><div class="line">    focusOut？（）：boolean;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="leopride.top/2017/04/12/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="aoter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="leopride's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/12/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T09:58:55+08:00">
-                2017-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -819,6 +450,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -838,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -892,6 +536,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AG-GRID分页"><span class="nav-number">1.</span> <span class="nav-text">AG-GRID分页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的分页"><span class="nav-number">1.1.</span> <span class="nav-text">简单的分页</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#要分页必备的几个属性"><span class="nav-number">1.1.0.0.0.1.</span> <span class="nav-text">要分页必备的几个属性</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端分页"><span class="nav-number">1.2.</span> <span class="nav-text">服务端分页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战："><span class="nav-number">1.3.</span> <span class="nav-text">实战：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待续：如何刷新当前数据"><span class="nav-number">1.4.</span> <span class="nav-text">待续：如何刷新当前数据</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1004,6 +664,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
