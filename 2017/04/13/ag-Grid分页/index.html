@@ -94,7 +94,7 @@
 <meta property="og:url" content="leopride.top/2017/04/13/ag-Grid分页/index.html">
 <meta property="og:site_name" content="leopride's blog">
 <meta property="og:description" content="AG-GRID分页ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件 简单的分页要分页必备的几个属性 pagination: true 开启分页，系统会自动开启默认的分页 paginationAutoPageSize: true 每页的显示行数自">
-<meta property="og:updated_time" content="2017-04-13T06:03:01.437Z">
+<meta property="og:updated_time" content="2017-07-06T02:00:45.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ag-Grid分页">
 <meta name="twitter:description" content="AG-GRID分页ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件 简单的分页要分页必备的几个属性 pagination: true 开启分页，系统会自动开启默认的分页 paginationAutoPageSize: true 每页的显示行数自">
@@ -198,6 +198,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -380,15 +390,14 @@
 </tbody>
 </table>
 <h2 id="服务端分页"><a href="#服务端分页" class="headerlink" title="服务端分页"></a>服务端分页</h2><pre><code>服务端分页是基于ag-grid的滚动模式，即鼠标下拉加载数据的一种，变成了分页加载而已，所以有些概念无法理解
-</code></pre><p>设置分页必备的几个属性</p>
-<ul>
+</code></pre><h3 id="设置分页必备的几个属性"><a href="#设置分页必备的几个属性" class="headerlink" title="设置分页必备的几个属性"></a>设置分页必备的几个属性</h3><ul>
 <li>rowModelType: ‘infinite’    开启无穷模式，必填</li>
 <li>infiniteBlockSize: 10 每次取得数据大小，和每页行数一致</li>
 <li>pagination: true</li>
 <li>paginationAutoPageSize: true   我这里高度只能容纳10和上面的 infiniteBlockSize 一致，这样每次加载的数据都在一页</li>
 </ul>
 <p>服务端分页不需要设置数据   rowData: rowData,了，而是改为 gridOptions.api.setDatasource(dataSource)设置数据源<br>先上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">function setRowData() &#123;</div><div class="line">    var dataSource = &#123;</div><div class="line">        rowCount: null, // behave as infinite scroll</div><div class="line">        getRows: function (params) &#123;</div><div class="line">            console.log(&apos;asking for &apos; + params.startRow + &apos; to &apos; + params.endRow);</div><div class="line">            // At this point in your code, you would call the server, using $http if in AngularJS 1.x.</div><div class="line">            // To make the demo look real, wait for 500ms before returning</div><div class="line">            $.getJSON(&quot;/bed/page&quot;, null, function (data) &#123;</div><div class="line">                var _data = data.list;</div><div class="line">                var rowsThisPage = _data;</div><div class="line">                params.successCallback(rowsThisPage, 113);</div><div class="line">            &#125;)</div><div class="line">            // setTimeout(function () &#123;</div><div class="line">            //     // take a slice of the total rows</div><div class="line">            //     var rowsThisPage = allOfTheData.slice(params.startRow, params.endRow);</div><div class="line">            //     // if on or after the last page, work out the last row.</div><div class="line">            //     var lastRow = 113;</div><div class="line">            //     alert(params.startRow + &apos;:&apos; + params.endRow);</div><div class="line">            //     if (allOfTheData.length &lt;= params.endRow) &#123;</div><div class="line">            //         // lastRow = allOfTheData.length;</div><div class="line">            //     &#125;</div><div class="line">            //     // call the success callback</div><div class="line">            //</div><div class="line">            // &#125;, 500);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    gridOptions.api.setDatasource(dataSource);</div><div class="line">&#125;</div><div class="line"> $(function () &#123;</div><div class="line">       setRowData();</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setRowData</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> dataSource = &#123;</div><div class="line">        <span class="attr">rowCount</span>: <span class="literal">null</span>, <span class="comment">// behave as infinite scroll</span></div><div class="line">        getRows: <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'asking for '</span> + params.startRow + <span class="string">' to '</span> + params.endRow);</div><div class="line">            <span class="comment">// At this point in your code, you would call the server, using $http if in AngularJS 1.x.</span></div><div class="line">            <span class="comment">// To make the demo look real, wait for 500ms before returning</span></div><div class="line">            $.getJSON(<span class="string">"/bed/page"</span>, <span class="literal">null</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> _data = data.list;</div><div class="line">                <span class="keyword">var</span> rowsThisPage = _data;</div><div class="line">                params.successCallback(rowsThisPage, <span class="number">113</span>);</div><div class="line">            &#125;)</div><div class="line">            <span class="comment">// setTimeout(function () &#123;</span></div><div class="line">            <span class="comment">//     // take a slice of the total rows</span></div><div class="line">            <span class="comment">//     var rowsThisPage = allOfTheData.slice(params.startRow, params.endRow);</span></div><div class="line">            <span class="comment">//     // if on or after the last page, work out the last row.</span></div><div class="line">            <span class="comment">//     var lastRow = 113;</span></div><div class="line">            <span class="comment">//     alert(params.startRow + ':' + params.endRow);</span></div><div class="line">            <span class="comment">//     if (allOfTheData.length &lt;= params.endRow) &#123;</span></div><div class="line">            <span class="comment">//         // lastRow = allOfTheData.length;</span></div><div class="line">            <span class="comment">//     &#125;</span></div><div class="line">            <span class="comment">//     // call the success callback</span></div><div class="line">            <span class="comment">//</span></div><div class="line">            <span class="comment">// &#125;, 500);</span></div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    gridOptions.api.setDatasource(dataSource);</div><div class="line">&#125;</div><div class="line"> $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">       setRowData();</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
 <p>我们看到，只要初始化的时候，给gridOptions设置一个DataSource即可，重点就在这个DataSource<br>数据源的添加方式有两种：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// set as a property</div><div class="line">gridOptions.datasource = myDatasource;</div><div class="line"></div><div class="line">// or use the api after the grid is initialised</div><div class="line">gridOptions.api.setDatasource(myDatasource);</div></pre></td></tr></table></figure>
 <p>DataSource的重点在于里面的getRow(),每次请求都会从里面去获取数据，我们根据官网的文档来看看它都有什么</p>
@@ -448,14 +457,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/04/13/ROUTING路由/" rel="next" title="Angular2路由">
+                <i class="fa fa-chevron-left"></i> Angular2路由
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/13/ROUTING路由/" rel="prev" title="Angular2路由">
-                Angular2路由 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/12/ag-grid开启行编辑/" rel="prev" title="ag-Grid开启行编辑">
+                ag-Grid开启行编辑 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -470,6 +483,29 @@
 
 
     <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
       
     </div>
   </div>
@@ -528,7 +564,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -541,7 +577,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -577,7 +613,7 @@
 
         
 
-
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4164331&auto=0&height=66"></iframe>
       </section>
 
       
@@ -590,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AG-GRID分页"><span class="nav-number">1.</span> <span class="nav-text">AG-GRID分页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的分页"><span class="nav-number">1.1.</span> <span class="nav-text">简单的分页</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#要分页必备的几个属性"><span class="nav-number">1.1.0.0.0.1.</span> <span class="nav-text">要分页必备的几个属性</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端分页"><span class="nav-number">1.2.</span> <span class="nav-text">服务端分页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战："><span class="nav-number">1.3.</span> <span class="nav-text">实战：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待续：如何刷新当前数据"><span class="nav-number">1.4.</span> <span class="nav-text">待续：如何刷新当前数据</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AG-GRID分页"><span class="nav-number">1.</span> <span class="nav-text">AG-GRID分页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的分页"><span class="nav-number">1.1.</span> <span class="nav-text">简单的分页</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#要分页必备的几个属性"><span class="nav-number">1.1.0.0.0.1.</span> <span class="nav-text">要分页必备的几个属性</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端分页"><span class="nav-number">1.2.</span> <span class="nav-text">服务端分页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置分页必备的几个属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">设置分页必备的几个属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战："><span class="nav-number">1.3.</span> <span class="nav-text">实战：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待续：如何刷新当前数据"><span class="nav-number">1.4.</span> <span class="nav-text">待续：如何刷新当前数据</span></a></li></ol></li></ol></div>
             
 
           </div>
