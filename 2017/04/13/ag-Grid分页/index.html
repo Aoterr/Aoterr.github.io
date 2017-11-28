@@ -1,0 +1,807 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ag-Grid," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="AG-GRID分页ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件 简单的分页要分页必备的几个属性 pagination: true 开启分页，系统会自动开启默认的分页 paginationAutoPageSize: true 每页的显示行数自">
+<meta name="keywords" content="ag-Grid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ag-Grid分页">
+<meta property="og:url" content="leopride.top/2017/04/13/ag-Grid分页/index.html">
+<meta property="og:site_name" content="leopride's blog">
+<meta property="og:description" content="AG-GRID分页ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件 简单的分页要分页必备的几个属性 pagination: true 开启分页，系统会自动开启默认的分页 paginationAutoPageSize: true 每页的显示行数自">
+<meta property="og:updated_time" content="2017-07-06T02:00:45.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ag-Grid分页">
+<meta name="twitter:description" content="AG-GRID分页ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件 简单的分页要分页必备的几个属性 pagination: true 开启分页，系统会自动开启默认的分页 paginationAutoPageSize: true 每页的显示行数自">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="leopride.top/2017/04/13/ag-Grid分页/"/>
+
+
+
+
+
+  <title> ag-Grid分页 | leopride's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">leopride's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">the leopride</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="leopride.top/2017/04/13/ag-Grid分页/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aoter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="leopride's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ag-Grid分页
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T14:02:27+08:00">
+                2017-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="AG-GRID分页"><a href="#AG-GRID分页" class="headerlink" title="AG-GRID分页"></a>AG-GRID分页</h1><pre><code>ag-grid的分页可以分为客户端分页和服务端分页，客户端分页，即后台直接将所有的数据传给前台。前台对数据进行分页和排序等等操作。而服务端操作为，每次选取的数据依旧为后台提供，同时将数据交给前台的分页组件
+</code></pre><h2 id="简单的分页"><a href="#简单的分页" class="headerlink" title="简单的分页"></a>简单的分页</h2><h6 id="要分页必备的几个属性"><a href="#要分页必备的几个属性" class="headerlink" title="要分页必备的几个属性"></a>要分页必备的几个属性</h6><ul>
+<li>pagination: true 开启分页，系统会自动开启默认的分页</li>
+<li>paginationAutoPageSize: true 每页的显示行数自适应你定义的高度</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pagination</td>
+<td>true 开启分页，系统会自动开启默认的分页，false（默认）</td>
+</tr>
+<tr>
+<td>paginationPageSize</td>
+<td>100，每页多少条默认100，如果paginationAutoPageSize存在，则无效</td>
+</tr>
+<tr>
+<td>paginationAutoPageSize</td>
+<td>true 每页的显示行数自适应你定义的高度，false(默认)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="服务端分页"><a href="#服务端分页" class="headerlink" title="服务端分页"></a>服务端分页</h2><pre><code>服务端分页是基于ag-grid的滚动模式，即鼠标下拉加载数据的一种，变成了分页加载而已，所以有些概念无法理解
+</code></pre><h3 id="设置分页必备的几个属性"><a href="#设置分页必备的几个属性" class="headerlink" title="设置分页必备的几个属性"></a>设置分页必备的几个属性</h3><ul>
+<li>rowModelType: ‘infinite’    开启无穷模式，必填</li>
+<li>infiniteBlockSize: 10 每次取得数据大小，和每页行数一致</li>
+<li>pagination: true</li>
+<li>paginationAutoPageSize: true   我这里高度只能容纳10和上面的 infiniteBlockSize 一致，这样每次加载的数据都在一页</li>
+</ul>
+<p>服务端分页不需要设置数据   rowData: rowData,了，而是改为 gridOptions.api.setDatasource(dataSource)设置数据源<br>先上代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setRowData</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> dataSource = &#123;</div><div class="line">        <span class="attr">rowCount</span>: <span class="literal">null</span>, <span class="comment">// behave as infinite scroll</span></div><div class="line">        getRows: <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'asking for '</span> + params.startRow + <span class="string">' to '</span> + params.endRow);</div><div class="line">            <span class="comment">// At this point in your code, you would call the server, using $http if in AngularJS 1.x.</span></div><div class="line">            <span class="comment">// To make the demo look real, wait for 500ms before returning</span></div><div class="line">            $.getJSON(<span class="string">"/bed/page"</span>, <span class="literal">null</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> _data = data.list;</div><div class="line">                <span class="keyword">var</span> rowsThisPage = _data;</div><div class="line">                params.successCallback(rowsThisPage, <span class="number">113</span>);</div><div class="line">            &#125;)</div><div class="line">            <span class="comment">// setTimeout(function () &#123;</span></div><div class="line">            <span class="comment">//     // take a slice of the total rows</span></div><div class="line">            <span class="comment">//     var rowsThisPage = allOfTheData.slice(params.startRow, params.endRow);</span></div><div class="line">            <span class="comment">//     // if on or after the last page, work out the last row.</span></div><div class="line">            <span class="comment">//     var lastRow = 113;</span></div><div class="line">            <span class="comment">//     alert(params.startRow + ':' + params.endRow);</span></div><div class="line">            <span class="comment">//     if (allOfTheData.length &lt;= params.endRow) &#123;</span></div><div class="line">            <span class="comment">//         // lastRow = allOfTheData.length;</span></div><div class="line">            <span class="comment">//     &#125;</span></div><div class="line">            <span class="comment">//     // call the success callback</span></div><div class="line">            <span class="comment">//</span></div><div class="line">            <span class="comment">// &#125;, 500);</span></div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    gridOptions.api.setDatasource(dataSource);</div><div class="line">&#125;</div><div class="line"> $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">       setRowData();</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>我们看到，只要初始化的时候，给gridOptions设置一个DataSource即可，重点就在这个DataSource<br>数据源的添加方式有两种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// set as a property</div><div class="line">gridOptions.datasource = myDatasource;</div><div class="line"></div><div class="line">// or use the api after the grid is initialised</div><div class="line">gridOptions.api.setDatasource(myDatasource);</div></pre></td></tr></table></figure>
+<p>DataSource的重点在于里面的getRow(),每次请求都会从里面去获取数据，我们根据官网的文档来看看它都有什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//无限滚动数据源</div><div class="line">接口IDatasource &#123;</div><div class="line"></div><div class="line">    //回调您从服务器获取行实现的网格调用。参见下面的参数。</div><div class="line">    getRows（params：IGetRowsParams）：void;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>getRows（）方法采用以下参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// Params for the above IDatasource.getRows（）</div><div class="line">接口IGetRowsParams &#123;</div><div class="line"></div><div class="line">    //要获取的第一行索引。</div><div class="line">    startRow：number;</div><div class="line"></div><div class="line">    //第一行索引不能得到。</div><div class="line">    endRow：number;</div><div class="line"></div><div class="line">    //如果进行服务器端排序，则包含排序模型</div><div class="line">    sortModel：any，</div><div class="line"></div><div class="line">    //如果进行服务器端过滤，则包含过滤器模型</div><div class="line">    filterModel：any;</div><div class="line"></div><div class="line">    //网格上下文对象</div><div class="line">    上下文：任何</div><div class="line"></div><div class="line">    //回调在成功时调用结果。</div><div class="line">    successCallback（rowsThisPage：any []，lastRow ?: number）：void;</div><div class="line"></div><div class="line">    //回调在失败时调用结果。</div><div class="line">    failCallback（）：void;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>初次使用有可能看不懂，就是定一个DataSoruce对象，这个对象里面有个getRow()方法，将DataSource对象给了 gridOptions 的时候 IDatasource 会识别它，并可以调用其中的getRow()方法，同样的，会为 getRow中的param 识别为一个 IGetRowsParams对象,param就拥有了相应的方法和值，java后端的理解，并不知道是否正确</p>
+<p>params.startRow + ‘ to ‘ + params.endRow 这两个是从多少行开始，多少行结束</p>
+<p>lastRow是最后几行?也就是总共多少行。</p>
+<hr>
+<p>补充：如果没有该数据，则为null或者-1，也就是如果没有数据返回 [] ，系统默认0不会出现问题</p>
+<p>getRow()是一个回调函数，调用params.successCallback(rowsThisPage, 113)返回的值，所以将处理结果放在successCallback中即可</p>
+<h2 id="实战："><a href="#实战：" class="headerlink" title="实战："></a>实战：</h2><ol>
+<li>grid初始化的时候设置属性：<br>datasource:new DataSource(saleOrderService)</li>
+</ol>
+<p>2.DataSource类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"> class DataSource implements IDatasource &#123;</div><div class="line">    constructor(private saleOrderService: SaleOrderService) &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    getRows(params: IGetRowsParams): void &#123;</div><div class="line">        //系统每次请求数据的时候，都会传入两个参数：startRow和endRow，你们懂的</div><div class="line">        </div><div class="line">        console.log(&apos;asking for &apos; + params.startRow + &apos; to &apos; + params.endRow);</div><div class="line">        //params.sortModel 是排序模式，这里是一个数组</div><div class="line">         console.log(params.sortModel);</div><div class="line">        var sort = params.sortModel[0];</div><div class="line">                var sortString = null;</div><div class="line">                if (sort != null) &#123;</div><div class="line">                    console.log(sort.sort);</div><div class="line">                    sortString=sort.colId+&apos;,&apos;+sort.sort;</div><div class="line">                &#125;</div><div class="line">        //这里做请求，根据请求返回的数据，请求成功调用params的successCallback(data,lastRow)方法</div><div class="line">        //modelGlobal则是任意参数 ，可以是startRow、endRow,这里没写，</div><div class="line">        this.saleOrderService.dynamicQuery(modelGlobal).subscribe(</div><div class="line">            (res: Response) =&gt; &#123;</div><div class="line">                console.log(modelGlobal);</div><div class="line">                params.successCallback(res.json(), res.json().length);</div><div class="line">            &#125;,</div><div class="line">            (res: Response) =&gt; &#123;</div><div class="line">                params.failCallback();</div><div class="line">            &#125;</div><div class="line">        );</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="待续：如何刷新当前数据"><a href="#待续：如何刷新当前数据" class="headerlink" title="待续：如何刷新当前数据"></a>待续：如何刷新当前数据</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ag-Grid/" rel="tag"># ag-Grid</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/05/jdk8-Lambda表达式语法规则/" rel="next" title="jdk8-Lambda表达式规则">
+                <i class="fa fa-chevron-left"></i> jdk8-Lambda表达式规则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/13/ROUTING路由/" rel="prev" title="Angular2路由">
+                Angular2路由 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="aoter" />
+          <p class="site-author-name" itemprop="name">aoter</p>
+           
+              <p class="site-description motion-element" itemprop="description">喜欢用更快的方式，去做繁琐的事情</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://breadykid.com/" title="坑面包的小女孩" target="_blank">坑面包的小女孩</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4164331&auto=0&height=66"></iframe>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AG-GRID分页"><span class="nav-number">1.</span> <span class="nav-text">AG-GRID分页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的分页"><span class="nav-number">1.1.</span> <span class="nav-text">简单的分页</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#要分页必备的几个属性"><span class="nav-number">1.1.0.0.0.1.</span> <span class="nav-text">要分页必备的几个属性</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端分页"><span class="nav-number">1.2.</span> <span class="nav-text">服务端分页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置分页必备的几个属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">设置分页必备的几个属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战："><span class="nav-number">1.3.</span> <span class="nav-text">实战：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待续：如何刷新当前数据"><span class="nav-number">1.4.</span> <span class="nav-text">待续：如何刷新当前数据</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aoter</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
